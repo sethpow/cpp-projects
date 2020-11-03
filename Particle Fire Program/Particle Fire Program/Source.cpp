@@ -2,6 +2,9 @@
 #include <SDL.h>
 #include <math.h>
 #include "Screen.h"
+#include "Swarm.h"
+#include <stdlib.h>
+#include <time.h>
 using namespace std;
 using namespace particlefire;
 
@@ -10,11 +13,15 @@ int main(int argc, char* args[]) {
 	// buffer containing pixel data
 	// buffer[30000] = 0xFFFFFFFF; // rgba packed into one Uint32
 
+	srand(time(NULL));
+
 	Screen screen;
 
 	if (screen.init() == false) {
 		cout << "Error initializing SDL" << endl;
 	}
+
+	Swarm swarm;
 
 	//bool quit = false;
 
@@ -22,21 +29,24 @@ int main(int argc, char* args[]) {
 	// Game (Event) loop
 	while (true) {
 		// Update particles
-
-
-		// Draw particles
-		// add block of color
-
 		// cycle thru color
 		int elapsed = SDL_GetTicks(); // milliseconds since start of program from -.99 to .99
 		unsigned char red = (1 + sin(elapsed * 0.000420)) * 128;
 		unsigned char green = (1 + sin(elapsed * 0.000525)) * 128;
 		unsigned char blue = (1 + cos(elapsed * 0.000630)) * 128;
 
-		for (int y = 0; y < Screen::SCREEN_HEIGHT; y++) {
-			for (int x = 0; x < Screen::SCREEN_WIDTH; x++) {
-				screen.setPixel(x, y, red, green, blue);
-			}
+
+		// Draw particles
+		const Particle* const pParticles = swarm.getParticles();
+		// getting particles 1 by 1
+		for (int i = 0; i < Swarm::NPARTICLES; i++) {
+			Particle particle = pParticles[i];
+			
+			// drawing particles on screen
+			int x = (particle.m_x + 1) * Screen::SCREEN_WIDTH / 2;
+			int y = (particle.m_y + 1) * Screen::SCREEN_HEIGHT / 2;
+
+			screen.setPixel(x, y, red, green, blue);
 		}
 
 

@@ -1,8 +1,1 @@
-﻿  Source.cpp
-C:\Users\setht\Documents\Development\C++\Particle Fire Program\Particle Fire Program\Source.cpp(16,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\setht\Documents\Development\C++\Particle Fire Program\Particle Fire Program\Source.cpp(40,21): warning C4244: 'initializing': conversion from 'double' to 'unsigned char', possible loss of data
-C:\Users\setht\Documents\Development\C++\Particle Fire Program\Particle Fire Program\Source.cpp(41,23): warning C4244: 'initializing': conversion from 'double' to 'unsigned char', possible loss of data
-C:\Users\setht\Documents\Development\C++\Particle Fire Program\Particle Fire Program\Source.cpp(42,22): warning C4244: 'initializing': conversion from 'double' to 'unsigned char', possible loss of data
-C:\Users\setht\Documents\Development\C++\Particle Fire Program\Particle Fire Program\Source.cpp(52,10): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\setht\Documents\Development\C++\Particle Fire Program\Particle Fire Program\Source.cpp(53,10): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-  Particle Fire Program.vcxproj -> C:\Users\setht\Documents\Development\C++\Particle Fire Program\x64\Debug\Particle Fire Program.exe
+﻿  Particle Fire Program.vcxproj -> C:\Users\setht\Documents\Development\cpp-projects\Particle Fire Program\x64\Debug\Particle Fire Program.exe

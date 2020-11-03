@@ -42,21 +42,36 @@ namespace particlefire {
 		}
 
 		// allocate enough memory for all the pixels on screen
-		Uint32* buffer = new Uint32[SCREEN_WIDTH * SCREEN_HEIGHT];
+		m_buffer = new Uint32[SCREEN_WIDTH * SCREEN_HEIGHT];
 
 		// write pixel info into buffer
 		// memset - allows you to set a block of memory with a particular value
 		// args: buffer, value that we are going to write into every byte of memory (255 / 0xFF is the max), # of bytes we want to set
-		SDL_memset(buffer, 0, SCREEN_WIDTH * SCREEN_HEIGHT * sizeof(Uint32));
+		SDL_memset(m_buffer, 0, SCREEN_WIDTH * SCREEN_HEIGHT * sizeof(Uint32));
 
-		// set whole screen to specific color
-		for (int i = 0; i < SCREEN_WIDTH * SCREEN_HEIGHT; i++) {
-			buffer[i] = 0x0080FFFF;
-		}
 
+		return true;
+	}
+
+	void Screen::setPixel(int x, int y, Uint8 red, Uint8 green, Uint8 blue) {
+		Uint32 color = 0;
+
+		color += red;
+		color <<= 8;
+		color += green;
+		color <<= 8;
+		color += blue;
+		color <<= 8;
+		color += 0xFF;
+
+		// buffer is all pixels on screen; finding index to map pixels
+		m_buffer[(y * SCREEN_WIDTH) + x] = color;
+	}
+
+	void Screen::update() {
 		// update texture with info from buffer ^^
 		// args: texture, NULL - to update entire texture, buffer - raw pixel data, pitch - memory allocated to one row of pixels / # of bytes per row of pixels
-		SDL_UpdateTexture(m_texture, NULL, buffer, SCREEN_WIDTH * sizeof(Uint32));
+		SDL_UpdateTexture(m_texture, NULL, m_buffer, SCREEN_WIDTH * sizeof(Uint32));
 
 		// clear the renderer
 		SDL_RenderClear(m_renderer);
@@ -67,8 +82,6 @@ namespace particlefire {
 
 		// present renderer to window / rendering to window
 		SDL_RenderPresent(m_renderer);
-
-		return true;
 	}
 
 

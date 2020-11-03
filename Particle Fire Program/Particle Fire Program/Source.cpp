@@ -26,13 +26,19 @@ int main(int argc, char* args[]) {
 
 		// Draw particles
 		// add block of color
+
+		// cycle thru color
+		int elapsed = SDL_GetTicks(); // milliseconds since start of program from -.99 to .99
+		unsigned char red = (1 + sin(elapsed * 0.000420)) * 128;
+		unsigned char green = (1 + sin(elapsed * 0.000525)) * 128;
+		unsigned char blue = (1 + cos(elapsed * 0.000630)) * 128;
+
 		for (int y = 0; y < Screen::SCREEN_HEIGHT; y++) {
 			for (int x = 0; x < Screen::SCREEN_WIDTH; x++) {
-				screen.setPixel(x, y, 128, 0, 255);
+				screen.setPixel(x, y, red, green, blue);
 			}
 		}
 
-		screen.setPixel(400, 300, 255, 255, 255);
 
 		// Draw screen
 		screen.update();
@@ -43,6 +49,7 @@ int main(int argc, char* args[]) {
 			break;
 		}
 	}
+
 
 	screen.close();
 

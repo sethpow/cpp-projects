@@ -9,13 +9,14 @@ public:
 	const static int NPARTICLES = 5000;
 
 private:
-	Particle* m_particles;
+	Particle* m_pParticles;
 
 public:
 	Swarm();
-	~Swarm();
+	virtual ~Swarm();
+	void update();
 	// const pointer pointing to a const Particle
-	const Particle* const getParticles() { return m_particles; };
+	const Particle* const getParticles() { return m_pParticles; };
 
 };
 }

@@ -9,7 +9,9 @@ struct Particle {
 
 public:
 	Particle();
-	~Particle();
+	virtual ~Particle();
+	// update position and color of particles
+	void update();
 
 };
 }

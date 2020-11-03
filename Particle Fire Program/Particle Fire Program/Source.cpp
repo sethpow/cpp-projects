@@ -31,6 +31,10 @@ int main(int argc, char* args[]) {
 		// Update particles
 		// cycle thru color
 		int elapsed = SDL_GetTicks(); // milliseconds since start of program from -.99 to .99
+		
+		// update positions and color
+		swarm.update();
+
 		unsigned char red = (1 + sin(elapsed * 0.000420)) * 128;
 		unsigned char green = (1 + sin(elapsed * 0.000525)) * 128;
 		unsigned char blue = (1 + cos(elapsed * 0.000630)) * 128;

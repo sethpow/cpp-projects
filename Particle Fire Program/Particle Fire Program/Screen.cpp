@@ -49,6 +49,7 @@ namespace particlefire {
 		SDL_memset(m_buffer, 0, SCREEN_WIDTH * SCREEN_HEIGHT * sizeof(Uint32));
 	}
 
+	// drawing particles
 	void Screen::setPixel(int x, int y, Uint8 red, Uint8 green, Uint8 blue) {
 
 		if (x < 0 || x >= SCREEN_WIDTH || y < 0 || y >= SCREEN_HEIGHT) {

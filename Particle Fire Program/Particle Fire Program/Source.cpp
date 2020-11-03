@@ -32,6 +32,8 @@ int main(int argc, char* args[]) {
 		// cycle thru color
 		int elapsed = SDL_GetTicks(); // milliseconds since start of program from -.99 to .99
 		
+		screen.clear();
+
 		// update positions and color
 		swarm.update();
 

@@ -7,6 +7,9 @@ namespace particlefire {
 		// random # between 0 and const max
 		m_x = ((2.0 * rand()) / RAND_MAX) - 1;
 		m_y = ((2.0 * rand()) / RAND_MAX) - 1;
+		// particle speed
+		m_xspeed = 0.001 * (((2.0 * rand()) / RAND_MAX) - 1);
+		m_yspeed = 0.001 * (((2.0 * rand()) / RAND_MAX) - 1);
 
 	}
 
@@ -16,10 +19,16 @@ namespace particlefire {
 
 	// update position and color of particles
 	void Particle::update() {
-		const double speed = 0.01;
+		m_x += m_xspeed;
+		m_y += m_yspeed;
 
-		m_x += speed;
-		m_y += speed;
+		if (m_x <= -1 || m_x >= 1.0) {
+			m_xspeed = -m_xspeed;
+		}
+
+		if (m_y <= -1 || m_y >= 1.0) {
+			m_yspeed = -m_yspeed;
+		}
 	}
 
 }

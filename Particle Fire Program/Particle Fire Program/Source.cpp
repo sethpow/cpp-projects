@@ -49,7 +49,16 @@ int main(int argc, char* args[]) {
 	// write pixel info into buffer
 	// memset - allows you to set a block of memory with a particular value
 	// args: buffer, value that we are going to write into every byte of memory (255 / 0xFF is the max), # of bytes we want to set
-	memset(buffer, 0xFF, SCREEN_WIDTH * SCREEN_HEIGHT * sizeof(Uint32));
+	memset(buffer, 0, SCREEN_WIDTH * SCREEN_HEIGHT * sizeof(Uint32));
+
+	// set whole screen to specific color
+	for (int i = 0; i < SCREEN_WIDTH * SCREEN_HEIGHT; i++) {
+		buffer[i] = 0x0080FFFF;
+	}
+
+	// setting individual pixels
+	// buffer containing pixel data
+	buffer[30000] = 0xFFFFFFFF; // rgba packed into one Uint32
 
 	// update texture with info from buffer ^^
 	// args: texture, NULL - to update entire texture, buffer - raw pixel data, pitch - memory allocated to one row of pixels / # of bytes per row of pixels
